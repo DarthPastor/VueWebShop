@@ -4,7 +4,8 @@ const app = Vue.createApp ({
             product: 'Socks',
             description: 'Premium winter cotton socks',
             image: './assets/images/socks_green.jpg',
-            url: 'https://www.vuemastery.com/'
+            url: 'https://www.vuemastery.com/',
+            inStock: true
         }
     }
 })
