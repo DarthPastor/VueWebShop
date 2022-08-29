@@ -20,11 +20,15 @@
           <div class="product-info">
             <h1>{{ product }}</h1>
             <p>{{ description }}</p>
-            <a :href="url">Made by Vue-Mastery</a>
-            <p v-if="inventory > 10">In Stock</p> <!--can also use "v-show" for toggling elements VISIBILITY-->
-            <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+            <p v-if="inStock">In Stock</p> <!--can also use "v-show" for toggling elements VISIBILITY-->
             <p v-else>Out of Stock</p>
-            <p v-if="onSale">On Sale!</p>
+            <ul>
+              <li v-for="detail in details">{{ detail }}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+            <ul>
+              <li v-for="size in sizes" :key="size.id">{{ size.size }}</li>
+            </ul>
           </div>
         </div>
       </div>
