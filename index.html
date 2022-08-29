@@ -10,28 +10,29 @@
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar"></div>
+      	<div class="nav-bar"></div>
 
-      <div class="product-display">
-        <div class="product-container">
-          <div class="product-image">
-            <img :src="image">
-          </div>
-          <div class="product-info">
-            <h1>{{ product }}</h1>
-            <p>{{ description }}</p>
-            <p v-if="inStock">In Stock</p> <!--can also use "v-show" for toggling elements VISIBILITY-->
-            <p v-else>Out of Stock</p>
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
-            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
-            <ul>
-              <li v-for="size in sizes" :key="size.id">{{ size.size }}</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      	<div class="cart">Cart ({{ cart }})</div>
+
+      	<div class="product-display">
+        	<div class="product-container">
+        		<div class="product-image">
+        		<img :src="image">
+        		</div>
+        		<div class="product-info">
+            		<h1>{{ product }}</h1>
+            		<p>{{ description }}</p>
+            		<p v-if="inStock">In Stock</p> <!--can also use "v-show" for toggling elements VISIBILITY-->
+            		<p v-else>Out of Stock</p>
+            		<ul>
+              			<li v-for="detail in details">{{ detail }}</li>
+            			</ul>
+            		<div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+            		<button class="button" @click="addToCart">Add to Cart</button>
+					<button class="button" @click="removeFromCart">Remove Item</button>
+          		</div>
+        	</div>
+      	</div>
     </div>
 
     <!-- Import App -->
