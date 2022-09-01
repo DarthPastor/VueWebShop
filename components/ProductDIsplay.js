@@ -1,4 +1,12 @@
 app.component('product-display', {
+
+    props: {
+        premium: {
+            type: Boolean,
+            required: true
+        }
+    },
+
     template:
     /*html*/
     `
@@ -14,9 +22,10 @@ app.component('product-display', {
             <p>{{ Sale }}</p>
             <p v-if="inStock">In Stock</p> <!--can also use "v-show" for toggling elements VISIBILITY-->
             <p v-else>Out of Stock</p>
-            <ul>
-                  <li v-for="detail in details">{{ detail }}</li>
-            </ul>
+
+            <p>Shipping: {{ shipping }}</p>
+
+            <product-details :details="details"></product-details>
 
             <div 
                 v-for="(variant, index) in variants" 
@@ -87,6 +96,12 @@ app.component('product-display', {
             },
             inStock() {
                 return this.variants[this.selectedVariant].quantity
+            },
+            shipping() {
+                if(this.premium) {
+                    return 'Free'
+                }
+                return 2.99
             }
         }
 
