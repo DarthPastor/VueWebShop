@@ -107,5 +107,4 @@ app.component('product-display', {
                 return 2.99
             }
         }
-
 })
